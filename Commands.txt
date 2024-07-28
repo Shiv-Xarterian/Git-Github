@@ -1,0 +1,166 @@
+git --version -> to check version of git
+
+git config user.email "youremail@gmail.com"
+git config user.name "Shiv"
+-> To config git on your local Machine / vs code or say to Link Git to your Vscode
+
+git config --list
+-> To get the configurations
+
+###-> Create Git Repository
+
+git status -> To check is it already a Repository or not
+git init -> To intialize a empty Repository
+
+Git Flow->
+
+    git init -> Directory initialized / We get working Directory
+    git add -> Staging Area -> Every Things That is changed is ready to add
+    git commit -> Everything that changed update to Repository
+    git push ->  Push Repository to Github
+
+git add <filename> <filename> ......... 
+
+To push all data -> git add .
+
+git log
+    -> To log all the commits happen
+
+git log --oneline -> Compact the git log
+
+git commit -m 'Message' -> To commit the data to the Repository
+-> Generally the message will be in Present Tense or Imperative
+
+.gitignore ->  This file holds that files need not to be pushed on the Github Like Env files etc.
+
+
+When Folders are Empty -> They Cant Add to Git Directly so we put .gitkeep file in it
+
+----
+
+Snapshots ->  The way git store files in intialize
+
+
+3 Musketeeres of Git->
+    1. Commit Object
+    2. Tree Object
+    3. Blob Object
+
+Commit Object-> 
+    Each commit in the project is stored in .git folder
+    Stores Information Like -> 
+        1. Tree Object
+        2. Parent Commit Object
+        3. Author
+        4. Committer
+        5. Commit Message
+
+Tree Object-> 
+    This is a container for all the files and folders in the project.
+    Stores Information Like->
+        1. File Mode
+        2. File Name
+        3. File Hash
+        4. Parent Tree Object
+
+
+Blob Object-> Actual File
+
+#-> Branching in Git & Github
+
+git branch -> Gives info about all existing branches
+git branch <branch_name> -> To create an extra branch
+git switch <branch_name> -> To switch to this branch
+git switch -c <branch_name> -> To create  + switch to a new branch
+git checkout <branch_name> -> To check whether a branch exists or not! 
+    -> if not then throw Error
+    -> Else switch to that branch
+
+
+1. Easiest merge / Fast Forward Merge
+#-> To merge items from another branch to your current branch
+git merge <branch_name>
+
+2. Not Fast Forward Merge
+#-> Conflicts occure between 2 different brnches 
+
+->Comparing different staging area 
+
+-- file a
+++ file b
+
+@@ indicate the file number
+
+git diff <branch_name1> <branch_name2>
+git diff <git-commit-hash1> <git-commit-hash2>
+git diff branch-name-one..branch-name-two
+
+
+GIT STASH->
+    A way to store your changes in a temporary location.
+
+    When u added your ur changes but not commited them -> so while changing branches u came across
+    an issue of loosing data
+    So u can create a stash to temporary store that data.
+
+
+-> git stash -> create a temporary storage
+-> git stash save "Message You Want"
+-> git stash list -> List of all the stash
+-> git stash apply -> Apply the top stash
+-> git stash apply stash@{0} -> Apply the specific stash
+-> git stash pop -> Apply and drop the top stash
+-> git stash drop -> Drop the top stash
+-> git stash apply stash@{0} <branch-name> -> Apply a specific stash to a specific branch
+-> git stash clear -> Clear the stash fully
+
+
+GIT TAGS->
+    git tag <tag_name> To create a Tag with a specific tag_name
+-> Tagging a specific commit
+    git tag <tag_name> <commit_hash>
+    git tag -a <tag_name> -m <CommitMessage>
+
+    git push origin <tag_name>
+    git tag -d <tag_name>
+
+
+GIT REBASE AND REFLOG->
+
+    When u start a second branch and suddenly some one updated the main branch and u want that your second branch should have all main branch
+    changes so->
+        Instead of Merge
+    We Can Rebase our Second Branch to latest Main Branch Commit
+
+
+git checkout feature-branch -> ALways try to go to sub branch (jisko update krna he usse start krege)
+git rebase main -> Jiske updated version ke acc update krna he
+
+
+git add <resolved-files> -> While rebase , merging always happens so if conflicts resolve them
+git rebase --continue -> continue the rebase
+
+
+ReFLOG->
+    Git reflog is a command that shows you the history of your commits. 
+
+    git reflog -> History of your commits
+    git reflog <commit-hash>  see a spcific commit
+
+Recover Lost Commits or Changes
+    -> git reflog <commit-hash>
+        git reset --hard <commit-hash>
+
+    -> git reflog <commit-hash>
+    git reset --hard HEAD@{n} -> HEAD@{n} to reset to the nth commit before the one you want to reset to.
+
+
+
+
+
+
+
+
+
+
+
